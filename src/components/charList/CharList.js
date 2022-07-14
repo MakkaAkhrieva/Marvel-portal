@@ -11,15 +11,31 @@ class CharList extends Component {
     error: false,
     newItemLoading: false,
     offset: 210,
+<<<<<<< HEAD
     charEnded: false,
+=======
+>>>>>>> c71d86bc93f5ecc63a323edc029c979a86f77417
   };
 
   marvelService = new MarvelService();
 
   componentDidMount() {
+<<<<<<< HEAD
     this.onRequest();
   }
 
+=======
+    this.marvelService
+      .getAllCharacters()
+      .then(this.onCharListLoaded)
+      .catch(this.onError);
+  }
+
+  /*   componentDidMount() {
+    this.onRequest();
+  } */
+
+>>>>>>> c71d86bc93f5ecc63a323edc029c979a86f77417
   onRequest = (offset) => {
     this.onCharListLoading();
     this.marvelService
@@ -35,6 +51,7 @@ class CharList extends Component {
   };
 
   onCharListLoaded = (newCharList) => {
+<<<<<<< HEAD
     let ended = false;
     if (newCharList.length < 9) {
       ended = true;
@@ -46,6 +63,13 @@ class CharList extends Component {
       newItemLoading: false,
       offset: offset + 9,
       charEnded: ended,
+=======
+    this.setState(({ offset, charList }) => ({
+      charList: [...charList, newCharList],
+      loading: false,
+      newItemLoading: false,
+      offset: offset + 9,
+>>>>>>> c71d86bc93f5ecc63a323edc029c979a86f77417
     }));
   };
 
@@ -79,13 +103,21 @@ class CharList extends Component {
         </li>
       );
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> c71d86bc93f5ecc63a323edc029c979a86f77417
     // А эта конструкция вынесена для центровки спиннера/ошибки
     return <ul className="char__grid">{items}</ul>;
   }
 
   render() {
+<<<<<<< HEAD
     const { charList, loading, error, newItemLoading, offset, charEnded } =
       this.state;
+=======
+    const { charList, loading, error, newItemLoading, offset } = this.state;
+>>>>>>> c71d86bc93f5ecc63a323edc029c979a86f77417
 
     const items = this.renderItems(charList);
 
@@ -102,7 +134,10 @@ class CharList extends Component {
           className="button button__main button__long"
           disabled={newItemLoading}
           onClick={() => this.onRequest(offset)}
+<<<<<<< HEAD
           style={{ display: charEnded ? "none" : "block" }}
+=======
+>>>>>>> c71d86bc93f5ecc63a323edc029c979a86f77417
         >
           <div className="inner">load more</div>
         </button>
